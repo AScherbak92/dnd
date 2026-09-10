@@ -1,0 +1,153 @@
+/* cipher.css - Стили для страницы шифрования */
+
+.back-button,
+.action-button,
+.form-group label,
+.form-group input {
+    font-family: 'TanaUncialSP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+    background-image: url('/images/Background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.content-panel {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 50px 40px;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.back-link {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.back-link a {
+    text-decoration: none;
+}
+
+.back-button {
+    background-image: url('/images/Button2.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    border: 2px solid rgba(255,255,255,0.3);
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+}
+
+.back-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 69, 0, 0.4);
+    border-color: rgba(255, 69, 0, 0.8);
+}
+
+/* Форма создания */
+.create-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-row {
+    margin-bottom: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.form-group input {
+    padding: 14px 18px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 0;
+    transition: all 0.3s ease;
+    outline: none;
+    font-family: inherit;
+}
+
+.form-group input:focus {
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.action-button {
+    background-image: url('/images/Button1.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    border: 2px solid rgba(255,255,255,0.3);
+    padding: 14px 40px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+}
+
+.action-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 255, 127, 0.4);
+    border-color: rgba(0, 255, 127, 0.8);
+}
+
+.action-button:active {
+    transform: scale(0.97);
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .content-panel {
+        padding: 30px 20px;
+    }
+
+    .form-group input {
+        font-size: 14px;
+        padding: 12px 14px;
+    }
+
+    .action-button {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}

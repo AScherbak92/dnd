@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Стены шепчут</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/research.css}">
+</head>
+<body>
+<div class="content-panel">
+  <div class="back-link">
+    <a th:href="@{/}">
+      <button class="back-button">Назад?</button>
+    </a>
+  </div>
+
+  <!-- Основная форма поиска -->
+  <form id="researchForm" th:action="@{/searchEntity}" method="post" th:object="${cypheredEntityDTO}" class="search-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="entityKey">Ключ:</label>
+        <input type="text" id="entityKey" th:field="*{entityKey}" />
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button type="submit" name="action" value="search" class="action-button search-button">Ищи</button>
+    </div>
+  </form>
+
+  <!-- Результаты поиска -->
+  <div th:if="${cypheredEntityDTO != null && cypheredEntityDTO.entityValue != null}" class="results-section">
+    <div class="result-text">
+      <h3>Результаты исследования:</h3>
+      <p class="entity-value" th:text="${cypheredEntityDTO.entityValue}"></p>
+    </div>
+  </div>
+
+  <!-- Сообщение об ошибке, если значение не найдено -->
+  <div th:if="${cypheredEntityDTO != null && cypheredEntityDTO.entityValue == null && error != null}" class="error-section">
+    <p class="error-message" th:text="${error}"></p>
+  </div>
+</div>
+</body>
+</html>

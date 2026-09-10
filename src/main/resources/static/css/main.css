@@ -1,0 +1,105 @@
+/* main.css - Стили для главной страницы */
+
+body {
+    background-image: url('/images/Background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 60px 50px;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 0;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.container a {
+    text-decoration: none;
+    display: block;
+    margin: 15px 0;
+}
+
+/* Кнопки с текстурными фонами */
+.btn {
+    width: 100%;
+    padding: 18px 30px;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 0px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-size: cover;
+    background-position: center;
+    min-height: 80px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+/* Текстурные фоны для каждой кнопки */
+.btn-research {
+    background-image: url('/images/Button1.jpg');
+}
+
+.btn-encrypt {
+    background-image: url('/images/Button1.jpg');
+}
+
+.btn-admin {
+    background-image: url('/images/Button2.jpg');
+}
+
+/* Заголовок страницы */
+.page-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+}
+
+.page-subtitle {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 30px;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .container {
+        padding: 30px 20px;
+    }
+
+    .btn {
+        font-size: 15px;
+        min-height: 60px;
+        padding: 12px 20px;
+    }
+
+    .page-title {
+        font-size: 22px;
+    }
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Оставь надежду</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/admin.css}">
+</head>
+<!-- Используем th:class вместо th:classappend -->
+<body th:class="${keyValid == true} ? 'admin-authenticated' : 'admin-login'">
+<div class="container" id="mainContainer">
+    <!-- Кнопка "Назад?" в правом верхнем углу -->
+    <div class="back-link">
+        <a th:href="@{/}">
+            <button class="back-button">Назад?</button>
+        </a>
+    </div>
+
+    <!-- Форма ввода ключа доступа -->
+    <div th:if="${keyValid != true}" class="form-container">
+        <form action="#" th:action="@{/verifyKey}" method="post">
+            <input type="password"
+                   name="key"
+                   class="key-input"
+                   placeholder="Введите ключ доступа"
+                   autocomplete="off"
+                   required>
+            <button type="submit" class="btn btn-submit">Ввести ключ</button>
+        </form>
+
+        <div th:if="${error != null}" class="error-message" th:text="${error}"></div>
+    </div>
+
+    <!-- Админ панель -->
+    <div th:if="${keyValid == true}">
+        <!-- Верхняя панель с кнопками -->
+        <div class="extra-buttons">
+            <!-- Кнопка "Шифровка" в левом боку -->
+            <a th:href="@{/cipher}" style="text-decoration: none;">
+                <button class="btn btn-encrypt">Шифровка</button>
+            </a>
+
+            <!-- Форма для просмотра записей -->
+            <form action="#" th:action="@{/showRecords}" method="get" style="display: inline-block;">
+                <button type="submit" class="btn btn-view">Просмотр БД</button>
+            </form>
+
+            <!-- Форма для удаления записи с полем ввода ключа -->
+            <div class="delete-form">
+                <form action="#" th:action="@{/deleteRecord}" method="post" class="delete-form-inline">
+                    <input type="text"
+                           name="entityKey"
+                           class="delete-key-input"
+                           placeholder="Введите ключ записи для удаления"
+                           autocomplete="off"
+                           required>
+                    <button type="submit" class="btn btn-delete">Удалить запись</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Сообщение об ошибке/успехе -->
+        <div th:if="${deleteError != null}" class="error-message" th:text="${deleteError}"></div>
+        <div th:if="${deleteSuccess != null}" class="success-message" th:text="${deleteSuccess}"></div>
+
+        <!-- Таблица с записями -->
+        <div th:if="${allRecords != null and !allRecords.isEmpty()}" class="result-section">
+            <div class="table-container">
+                <table class="result-table">
+                    <thead>
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                        <th colspan="2">Действие</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="record : ${allRecords}">
+                        <td th:text="${record.entityKey}"></td>
+                        <td class="truncated-value" th:text="${#strings.abbreviate(record.entityValue, 50)}"></td>
+                        <td>
+                            <a th:href="@{/viewRecord(key=${record.entityKey})}" class="btn-view-link">
+                                <button class="btn btn-view-record">Просмотр</button>
+                            </a>
+                        </td>
+                        <td>
+                            <form action="#" th:action="@{/deleteRecord}" method="post" style="margin: 0;">
+                                <input type="hidden" name="entityKey" th:value="${record.entityKey}">
+                                <button type="submit" class="btn btn-small-delete">Удалить</button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Сообщение если записей нет -->
+        <div th:if="${allRecords != null and allRecords.isEmpty()}" class="info-message">
+            <p>В базе данных нет записей</p>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript для дополнительной надежности -->
+<script th:inline="javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        var keyValid = /*[[${keyValid}]]*/ false;
+        if (keyValid) {
+            document.body.classList.remove('admin-login');
+            document.body.classList.add('admin-authenticated');
+            // Для надежности также меняем стиль напрямую
+            document.body.style.backgroundImage = "url('/images/Background.jpg')";
+        } else {
+            document.body.classList.remove('admin-authenticated');
+            document.body.classList.add('admin-login');
+            document.body.style.backgroundImage = "url('/images/BackgroundAdmin.jpg')";
+        }
+    });
+</script>
+</body>
+</html>
