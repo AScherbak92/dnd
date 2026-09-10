@@ -14,7 +14,7 @@
 .info-message,
 .result-table th,
 .result-table td {
-    font-family: 'TanaUncialSP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'FoglihtenNo06_076', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 /* Фон по умолчанию (для страницы входа) */
@@ -27,9 +27,11 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    min-height: 100dvh;
     margin: 0;
     padding: 20px;
     transition: background-image 0.5s ease;
+    overflow-x: hidden;
 }
 
 /* Явно задаем фоны для разных классов */
@@ -41,7 +43,7 @@ body.admin-authenticated {
     background-image: url('/images/Background.jpg');
 }
 
-/* Если классов нет - используем BackgroundAdmin.jpg как fallback */
+/* Fallback если классов нет */
 body:not(.admin-authenticated):not(.admin-login) {
     background-image: url('/images/BackgroundAdmin.jpg');
 }
@@ -83,6 +85,8 @@ body:not(.admin-authenticated):not(.admin-login) {
     text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
     text-transform: uppercase;
     letter-spacing: 1px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .back-button:hover {
@@ -109,6 +113,8 @@ body:not(.admin-authenticated):not(.admin-login) {
     outline: none;
     font-family: inherit;
     margin-bottom: 15px;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 .key-input:focus {
@@ -133,6 +139,8 @@ body:not(.admin-authenticated):not(.admin-login) {
     text-transform: uppercase;
     letter-spacing: 2px;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .btn-submit:hover {
@@ -174,6 +182,8 @@ body:not(.admin-authenticated):not(.admin-login) {
     text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
     text-transform: uppercase;
     letter-spacing: 1px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .btn-encrypt:hover {
@@ -198,6 +208,8 @@ body:not(.admin-authenticated):not(.admin-login) {
     text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
     text-transform: uppercase;
     letter-spacing: 1px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .btn-view:hover {
@@ -227,6 +239,8 @@ body:not(.admin-authenticated):not(.admin-login) {
     border-radius: 0;
     transition: all 0.3s ease;
     outline: none;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 .delete-key-input:focus {
@@ -251,6 +265,8 @@ body:not(.admin-authenticated):not(.admin-login) {
     text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
     text-transform: uppercase;
     letter-spacing: 1px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .btn-delete:hover {
@@ -274,6 +290,8 @@ body:not(.admin-authenticated):not(.admin-login) {
     text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
     text-transform: uppercase;
     letter-spacing: 1px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .btn-small-delete:hover {
@@ -297,6 +315,8 @@ body:not(.admin-authenticated):not(.admin-login) {
     text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
     text-transform: uppercase;
     letter-spacing: 1px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .btn-view-record:hover {
@@ -327,6 +347,7 @@ body:not(.admin-authenticated):not(.admin-login) {
     font-size: 14px;
     margin-top: 15px;
     width: 100%;
+    word-wrap: break-word;
 }
 
 .success-message {
@@ -338,6 +359,7 @@ body:not(.admin-authenticated):not(.admin-login) {
     font-size: 14px;
     margin-top: 15px;
     width: 100%;
+    word-wrap: break-word;
 }
 
 .info-message {
@@ -359,6 +381,7 @@ body:not(.admin-authenticated):not(.admin-login) {
 /* Таблица */
 .table-container {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     margin-top: 25px;
     border: 2px solid rgba(255,255,255,0.2);
 }
@@ -398,8 +421,14 @@ body:not(.admin-authenticated):not(.admin-login) {
     border-bottom: none;
 }
 
-/* Адаптивность */
+/* ============================================ */
+/* ПЛАНШЕТЫ (до 768px) */
+/* ============================================ */
 @media (max-width: 768px) {
+    body {
+        padding: 12px;
+    }
+
     #mainContainer {
         padding: 25px 20px;
     }
@@ -413,6 +442,11 @@ body:not(.admin-authenticated):not(.admin-login) {
     .extra-buttons {
         flex-direction: column;
         align-items: stretch;
+    }
+
+    .extra-buttons > a,
+    .extra-buttons > form {
+        width: 100%;
     }
 
     .delete-form-inline {
@@ -437,31 +471,105 @@ body:not(.admin-authenticated):not(.admin-login) {
     }
 }
 
+/* ============================================ */
+/* МОБИЛЬНЫЕ (до 480px) */
+/* ============================================ */
 @media (max-width: 480px) {
-    #mainContainer {
-        padding: 20px 15px;
+    body {
+        padding: 8px;
     }
 
-    .key-input {
-        font-size: 14px;
+    #mainContainer {
+        padding: 20px 14px;
+    }
+
+    .back-button {
+        font-size: 12px;
+        padding: 6px 14px;
+    }
+
+    .form-container {
+        padding-top: 10px;
+    }
+
+    .key-input,
+    .delete-key-input {
+        font-size: 16px;
         padding: 12px 14px;
     }
 
-    .result-table {
-        font-size: 11px;
+    .btn-submit {
+        font-size: 14px;
+        padding: 12px;
     }
 
-    .result-table th, .result-table td {
-        padding: 6px 8px;
+    .btn-encrypt,
+    .btn-view,
+    .btn-delete {
+        font-size: 13px;
+        padding: 12px 16px;
     }
 
     .btn-small-delete,
     .btn-view-record {
-        padding: 4px 10px;
+        padding: 5px 10px;
         font-size: 11px;
+    }
+
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .result-table {
+        font-size: 11px;
+        min-width: 500px;
+    }
+
+    .result-table th, .result-table td {
+        padding: 8px 6px;
+        white-space: nowrap;
+    }
+
+    .truncated-value {
+        max-width: 80px;
+    }
+
+    .error-message,
+    .success-message {
+        font-size: 13px;
+        padding: 10px 12px;
+    }
+
+    .info-message {
+        padding: 15px;
+    }
+
+    .info-message p {
+        font-size: 14px;
+    }
+}
+
+/* ============================================ */
+/* ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ (до 360px) */
+/* ============================================ */
+@media (max-width: 360px) {
+    #mainContainer {
+        padding: 16px 10px;
+    }
+
+    .btn-encrypt,
+    .btn-view,
+    .btn-delete {
+        font-size: 12px;
+        padding: 10px 12px;
     }
 
     .truncated-value {
         max-width: 60px;
+    }
+
+    .result-table {
+        font-size: 10px;
     }
 }

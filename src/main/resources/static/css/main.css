@@ -10,7 +10,9 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    min-height: 100dvh;
     margin: 0;
+    padding: 16px;
 }
 
 .container {
@@ -20,7 +22,6 @@ body {
     max-width: 500px;
     width: 100%;
     border-radius: 0;
-    border-radius: 16px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.3);
 }
 
@@ -32,6 +33,7 @@ body {
 
 /* Кнопки с текстурными фонами */
 .btn {
+    font-family: 'FoglihtenNo06_076', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     width: 100%;
     padding: 18px 30px;
     font-size: 18px;
@@ -39,7 +41,7 @@ body {
     color: white;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
     border: 2px solid rgba(255,255,255,0.3);
-    border-radius: 0px;
+    border-radius: 0;
     cursor: pointer;
     transition: all 0.3s ease;
     background-size: cover;
@@ -49,6 +51,8 @@ body {
     letter-spacing: 2px;
     position: relative;
     overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .btn:hover {
@@ -65,41 +69,109 @@ body {
     background-image: url('/images/Button1.jpg');
 }
 
-.btn-encrypt {
-    background-image: url('/images/Button1.jpg');
+.btn-research:hover {
+    box-shadow:
+        0 0 30px rgba(100, 149, 237, 0.6),
+        0 0 60px rgba(100, 149, 237, 0.3),
+        0 8px 30px rgba(0,0,0,0.4);
+    border-color: rgba(100, 149, 237, 0.8);
 }
 
 .btn-admin {
     background-image: url('/images/Button2.jpg');
 }
 
+.btn-admin:hover {
+    box-shadow:
+        0 0 30px rgba(255, 69, 0, 0.6),
+        0 0 60px rgba(255, 69, 0, 0.3),
+        0 8px 30px rgba(0,0,0,0.4);
+    border-color: rgba(255, 69, 0, 0.8);
+}
+
 /* Заголовок страницы */
 .page-title {
+    font-family: 'FoglihtenNo06_076', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-size: 28px;
     font-weight: 700;
-    color: #1a1a1a;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
     margin-bottom: 10px;
+    word-wrap: break-word;
 }
 
 .page-subtitle {
+    font-family: 'FoglihtenNo06_076', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-size: 14px;
-    color: #888;
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 30px;
 }
 
-/* Адаптивность */
+/* ============================================ */
+/* ПЛАНШЕТЫ (до 768px) */
+/* ============================================ */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 30px;
+    }
+
+    .btn {
+        font-size: 16px;
+        min-height: 70px;
+        padding: 16px 24px;
+    }
+}
+
+/* ============================================ */
+/* МОБИЛЬНЫЕ (до 480px) */
+/* ============================================ */
 @media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+
     .container {
         padding: 30px 20px;
+        max-width: 100%;
+    }
+
+    .container a {
+        margin: 10px 0;
     }
 
     .btn {
         font-size: 15px;
-        min-height: 60px;
-        padding: 12px 20px;
+        min-height: 65px;
+        padding: 14px 20px;
+        letter-spacing: 1px;
     }
 
     .page-title {
         font-size: 22px;
+    }
+
+    .page-subtitle {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+}
+
+/* ============================================ */
+/* ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ (до 360px) */
+/* ============================================ */
+@media (max-width: 360px) {
+    .container {
+        padding: 20px 14px;
+    }
+
+    .btn {
+        font-size: 13px;
+        min-height: 55px;
+        padding: 12px 14px;
+        letter-spacing: 0.5px;
+    }
+
+    .page-title {
+        font-size: 18px;
     }
 }
